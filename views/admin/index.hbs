@@ -1,0 +1,11 @@
+<div class='container'>
+    <h2>User List</h2>
+    <ul class='list-group'>
+    {{#each users}}
+        <li class='list-group-item'>
+            <a href="/admins/check_user/{{this._id}}">{{this.name}}</a>
+            <button class='btn btn-danger float-right delete_user' user_id="{{this._id}}" style="display:none" >Delete</button>
+        </li>
+    {{/each}}
+    </ul>
+</div>

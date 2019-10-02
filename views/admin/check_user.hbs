@@ -1,0 +1,21 @@
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class='col text-center'><h4>Name:{{user_checked.name}}</h4></div>
+        <div class='col text-center'><h4>Email:{{user_checked.email}}</h4></div>
+    </div>
+    <hr>
+    <label for="Reports">
+        <b>Reports:</b>
+        {{#if noArticles}}
+        <span style="color:red">(* the user has no reports)</span>
+        {{/if}}
+    </label>
+
+    <ul class='list-group'>
+    {{#each articles}}
+        <li class='list-group-item'><a href="/articles/{{this._id}}">{{this.title}}</a></li>
+    {{/each}}
+    </ul>
+</div>

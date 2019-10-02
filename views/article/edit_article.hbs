@@ -1,0 +1,36 @@
+<br>
+<div class='container'>
+    <div class='row justify-content-center'>
+        <div class='col-auto'><h2>{{article.title}}</h2></div>
+    </div>
+    <br>
+
+    <div class='row justify-content-center'>
+        <div class='col-auto'><p>{{author}}</p></div>
+        <div class='col-auto'><p>{{article.timestamp}}</p></div>
+        <div class='col-auto'><p>{{article.location}}</p></div>
+    </div>
+    <hr>
+    <label for="images"><b>Images</b></label>
+    <div class='row justify-content-around'>
+        {{#each imagePathes}}
+            <div class='col text-center'>
+                <img src="{{this}}" style="width:auto; max-height:250px;" class='img-thumbnail' alt="pics">
+            </div>
+        {{/each}}
+    </div>
+    <br>
+    
+    <form action="/articles/edit/{{article._id}}" method='post'>
+        <label for="description"><b>Description</b></label>
+        <textarea name="description" id="description" class='form-control'>{{article.description}}</textarea>
+        <hr>
+        <div class='row justify-content-around'>
+            <div class='col-xs-2 text-center'>
+                <button type='submit' class="btn btn-primary">Submit Update</a>
+            </div>
+        </div>
+    </form>
+
+    <br>
+</div>

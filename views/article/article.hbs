@@ -1,0 +1,46 @@
+<br>
+<div class='container'>
+    <div class='row justify-content-center'>
+        <div class='col-auto'><h2>{{article.title}}</h2></div>
+    </div>
+    <br>
+
+    <div class='row justify-content-center'>
+        <div class='col-auto'><p>{{author}}</p></div>
+        <div class='col-auto'><p>{{article.timestamp}}</p></div>
+        <div class='col-auto'><p>{{article.location}}</p></div>
+    </div>
+    <hr>
+    <label for="images"><b>Images</b></label>
+    <div class='row justify-content-around'>
+        {{#each imagePathes}}
+            <div class='col text-center'>
+                <img src="{{this}}" style="width:auto; max-height:250px;" class='img-thumbnail' alt="pics">
+            </div>
+        {{/each}}
+    </div>
+    <br>
+    <label for="description"><b>Description</b></label>
+    <textarea name="description" id="description" class='form-control' disabled='disabled'>{{article.description}}</textarea>
+    
+    <hr>
+    <div class='row justify-content-around'>
+        {{#if user.isAdmin}}
+            <div class='col text-center'>
+                <a href="/articles/edit/{{article._id}}" class="btn btn-default">Edit</a>
+            </div>
+        {{else}}
+            <div class='col text-center'>
+                <a href="/articles/edit/{{article._id}}" class="btn btn-default">Edit</a>
+            </div>
+            <div class='col text-center'>
+                <a class='btn btn-danger delete-article' href="#" data-id="{{article._id}}">Delete</a>
+            </div>
+        {{/if}}
+    </div>
+
+    <br>
+</div>
+
+
+

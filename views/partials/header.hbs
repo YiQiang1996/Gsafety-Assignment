@@ -1,0 +1,62 @@
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class='container'>
+  <a class="navbar-brand" href="#">KnowledgeBase</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExample04">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      {{#if user}}
+      {{#if user.isAdmin}}
+        <li class="nav-item">
+          <a class="nav-link" href="/admins/add_user">Add user</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link' href="#" id="delete_users">Delete User</a>
+        </li>
+      {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="/articles/add">Add Article</a>
+        </li>
+      {{/if}}
+      {{/if}}
+    </ul>
+    <ul class='navbar-nav navbar-right '>
+      {{#if user}}
+        {{#if user.isAdmin}}
+          <li class="nav-item">
+            <a class="nav-link" href="/admins/index">Welcome Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admins/logout">Logout</a>
+          </li>
+        {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="/">{{user.name}}</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/users/logout">Logout</a>
+          </li>
+        {{/if}}
+      {{else}}
+      <li class="nav-item">
+        <a class="nav-link" href="/users/register">Register</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown04">
+          <a class="dropdown-item" href="/users/login">User/Login</a>
+          <a class="dropdown-item" href="/admins/login">Admin/Login</a>
+        </div>
+      </li>
+      {{/if}}
+    </ul>
+  </div>
+  </div>
+</nav>
+
