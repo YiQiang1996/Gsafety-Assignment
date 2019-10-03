@@ -20,7 +20,12 @@ body('email').isEmail().withMessage("Email is invalid").custom(value=>{
     });
 }), 
 body('password').not().isEmpty().withMessage("Password is required").isLength({min:8}).withMessage("password must at least contains 8 characters"),
-body('password2').not().matches("password").withMessage("password does not match")],
+body('password2').custom((value,{req})=>{
+    if(value!=req.body.password){
+        throw new Error("Password confirmation does not match password");
+    }
+    return true;
+})],
 function(req,res){
 
     let errors=validationResult(req).errors;
